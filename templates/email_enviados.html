@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>E-mails enviados</h2>
+    <p class="text-muted">Relação de e-mails enviados pelo sistema</p>
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>De</th>
+                <th>Para</th>
+                <th>Assunto</th>
+                <th>Texto</th>
+                <th>Data/Hora</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for email in emails %}
+            <tr>
+                <td>{{ email.remetente }}</td>
+                <td>{{ email.destinatario }}</td>
+                <td>{{ email.assunto }}</td>
+                <td>{{ email.texto }}</td>
+                <td>{{ email.data_hora.strftime('%d/%m/%Y %H:%M:%S') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
